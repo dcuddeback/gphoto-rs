@@ -1,6 +1,7 @@
 use std::mem;
 
 use ::context::Context;
+use ::port::Port;
 
 use ::handle::prelude::*;
 
@@ -29,5 +30,16 @@ impl Camera {
         try_unsafe!(::gphoto2::gp_camera_init(camera.camera, context.as_mut_ptr()));
 
         Ok(camera)
+    }
+
+    /// Returns information about the port the camera is connected to.
+    pub fn port<'a>(&'a self) -> Port<'a> {
+        let mut ptr = unsafe { mem::uninitialized() };
+
+        unsafe {
+            assert_eq!(::gphoto2::GP_OK, ::gphoto2::gp_camera_get_port_info(self.camera, &mut ptr));
+        }
+
+        ::port::from_libgphoto2(self, ptr)
     }
 }
