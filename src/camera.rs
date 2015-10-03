@@ -1,6 +1,7 @@
 use std::mem;
 
 use ::context::Context;
+use ::abilities::Abilities;
 use ::port::Port;
 
 use ::handle::prelude::*;
@@ -41,6 +42,17 @@ impl Camera {
         }
 
         ::port::from_libgphoto2(self, ptr)
+    }
+
+    /// Retrieves the camera's abilities.
+    pub fn abilities(&self) -> Abilities {
+        let mut abilities = unsafe { mem::uninitialized() };
+
+        unsafe {
+            assert_eq!(::gphoto2::GP_OK, ::gphoto2::gp_camera_get_abilities(self.camera, &mut abilities));
+        }
+
+        ::abilities::from_libgphoto2(abilities)
     }
 
     /// Returns the camera's summary.
