@@ -12,6 +12,9 @@ pub type Result<T> = StdResult<T,Error>;
 /// Types of errors reported by gphoto2.
 #[derive(Debug,PartialEq,Eq,Clone,Copy)]
 pub enum ErrorKind {
+    /// Functionality not supported.
+    NotSupported,
+
     /// Corrupted data received.
     CorruptedData,
 
@@ -62,6 +65,7 @@ impl Error {
     /// Returns the kind of error.
     pub fn kind(&self) -> ErrorKind {
         match self.err {
+            ::gphoto2::GP_ERROR_NOT_SUPPORTED       => ErrorKind::NotSupported,
             ::gphoto2::GP_ERROR_CORRUPTED_DATA      => ErrorKind::CorruptedData,
             ::gphoto2::GP_ERROR_FILE_EXISTS         => ErrorKind::FileExists,
             ::gphoto2::GP_ERROR_MODEL_NOT_FOUND     => ErrorKind::ModelNotFound,
@@ -75,7 +79,7 @@ impl Error {
             ::gphoto2::GP_ERROR_OS_FAILURE          => ErrorKind::OSFailure,
             ::gphoto2::GP_ERROR_NO_SPACE            => ErrorKind::NoSpace,
 
-            _ => ErrorKind::Other
+            ::gphoto2::GP_ERROR | _ => ErrorKind::Other
         }
     }
 

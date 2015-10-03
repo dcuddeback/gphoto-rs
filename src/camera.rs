@@ -42,4 +42,77 @@ impl Camera {
 
         ::port::from_libgphoto2(self, ptr)
     }
+
+    /// Returns the camera's summary.
+    ///
+    /// The summary typically contains non-configurable information about the camera, such as
+    /// manufacturer and number of pictures taken.
+    ///
+    /// ## Errors
+    ///
+    /// This function returns an error if the summary could not be retrieved:
+    ///
+    /// * `NotSupported` if there is no summary available for the camera.
+    /// * `CorruptedData` if the summary is invalid UTF-8.
+    pub fn summary(&mut self, context: &mut Context) -> ::Result<String> {
+        let mut summary = unsafe { mem::uninitialized() };
+
+        try_unsafe!(::gphoto2::gp_camera_get_summary(self.camera, &mut summary, context.as_mut_ptr()));
+
+        util::camera_text_to_string(summary)
+    }
+
+    /// Returns the camera's manual.
+    ///
+    /// The manual contains information about using the camera.
+    ///
+    /// ## Errors
+    ///
+    /// This function returns an error if the manual could not be retrieved:
+    ///
+    /// * `NotSupported` if there is no manual available for the camera.
+    /// * `CorruptedData` if the summary is invalid UTF-8.
+    pub fn manual(&mut self, context: &mut Context) -> ::Result<String> {
+        let mut manual = unsafe { mem::uninitialized() };
+
+        try_unsafe!(::gphoto2::gp_camera_get_manual(self.camera, &mut manual, context.as_mut_ptr()));
+
+        util::camera_text_to_string(manual)
+    }
+
+    /// Returns information about the camera driver.
+    ///
+    /// This text typically contains information about the driver's author, acknowledgements, etc.
+    ///
+    /// ## Errors
+    ///
+    /// This function returns an error if the about text could not be retrieved:
+    ///
+    /// * `NotSupported` if there is no about text available for the camera's driver.
+    /// * `CorruptedData` if the summary is invalid UTF-8.
+    pub fn about_driver(&mut self, context: &mut Context) -> ::Result<String> {
+        let mut about = unsafe { mem::uninitialized() };
+
+        try_unsafe!(::gphoto2::gp_camera_get_about(self.camera, &mut about, context.as_mut_ptr()));
+
+        util::camera_text_to_string(about)
+    }
+}
+
+mod util {
+    use std::ffi::CStr;
+
+    pub fn camera_text_to_string(mut camera_text: ::gphoto2::CameraText) -> ::Result<String> {
+        let length = unsafe {
+            CStr::from_ptr(camera_text.text.as_ptr()).to_bytes().len()
+        };
+
+        let vec = unsafe {
+            Vec::<u8>::from_raw_parts(camera_text.text.as_mut_ptr() as *mut u8, length, camera_text.text.len())
+        };
+
+        String::from_utf8(vec).map_err(|_| {
+            ::error::from_libgphoto2(::gphoto2::GP_ERROR_CORRUPTED_DATA)
+        })
+    }
 }
