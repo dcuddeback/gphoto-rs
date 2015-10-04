@@ -1,7 +1,10 @@
+use std::borrow::Cow;
+use std::ffi::CStr;
 use std::mem;
 
 use ::context::Context;
 use ::abilities::Abilities;
+use ::media::Media;
 use ::port::Port;
 use ::storage::Storage;
 
@@ -32,6 +35,34 @@ impl Camera {
         try_unsafe!(::gphoto2::gp_camera_init(camera.camera, context.as_mut_ptr()));
 
         Ok(camera)
+    }
+
+    /// Captures an image.
+    pub fn capture_image(&mut self, context: &mut Context) -> ::Result<CameraFile> {
+        let mut file_path = unsafe { mem::uninitialized() };
+
+        try_unsafe! {
+            ::gphoto2::gp_camera_capture(self.camera,
+                                         ::gphoto2::GP_CAPTURE_IMAGE,
+                                         &mut file_path,
+                                         context.as_mut_ptr())
+        };
+
+        Ok(CameraFile { inner: file_path })
+    }
+
+    /// Downloads a file from the camera.
+    pub fn download<T: Media>(&mut self, context: &mut Context, source: &CameraFile, destination: &mut T) -> ::Result<()> {
+        try_unsafe! {
+            ::gphoto2::gp_camera_file_get(self.camera,
+                                          source.inner.folder.as_ptr(),
+                                          source.inner.name.as_ptr(),
+                                          ::gphoto2::GP_FILE_TYPE_NORMAL,
+                                          destination.as_mut_ptr(),
+                                          context.as_mut_ptr())
+        };
+
+        Ok(())
     }
 
     /// Returns information about the port the camera is connected to.
@@ -129,6 +160,28 @@ impl Camera {
         try_unsafe!(::gphoto2::gp_camera_get_about(self.camera, &mut about, context.as_mut_ptr()));
 
         util::camera_text_to_string(about)
+    }
+}
+
+
+/// A file stored on a camera's storage.
+pub struct CameraFile {
+    inner: ::gphoto2::CameraFilePath,
+}
+
+impl CameraFile {
+    /// Returns the directory that the file is stored in.
+    pub fn directory(&self) -> Cow<str> {
+        unsafe {
+            String::from_utf8_lossy(CStr::from_ptr(self.inner.folder.as_ptr()).to_bytes())
+        }
+    }
+
+    /// Returns the name of the file without the directory.
+    pub fn basename(&self) -> Cow<str> {
+        unsafe {
+            String::from_utf8_lossy(CStr::from_ptr(self.inner.name.as_ptr()).to_bytes())
+        }
     }
 }
 
