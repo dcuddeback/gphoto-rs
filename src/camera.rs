@@ -3,6 +3,7 @@ use std::mem;
 use ::context::Context;
 use ::abilities::Abilities;
 use ::port::Port;
+use ::storage::Storage;
 
 use ::handle::prelude::*;
 
@@ -53,6 +54,26 @@ impl Camera {
         }
 
         ::abilities::from_libgphoto2(abilities)
+    }
+
+    /// Retrieves information about the camera's storage.
+    ///
+    /// Returns a `Vec` containing one `Storage` for each filesystem on the device.
+    pub fn storage(&mut self, context: &mut Context) -> ::Result<Vec<Storage>> {
+        let mut ptr = unsafe { mem::uninitialized() };
+        let mut len = unsafe { mem::uninitialized() };
+
+        try_unsafe! {
+            ::gphoto2::gp_camera_get_storageinfo(self.camera,
+                                                 &mut ptr,
+                                                 &mut len,
+                                                 context.as_mut_ptr())
+        };
+
+        let storage = ptr as *mut Storage;
+        let length = len as usize;
+
+        Ok(unsafe { Vec::from_raw_parts(storage, length, length) })
     }
 
     /// Returns the camera's summary.
