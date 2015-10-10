@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["libgphoto2_version","Returns a structure with the version of the `libgphoto2` C library."]],"struct":[["LibraryVersion","A structure that describes the version of the `libgphoto2` library."]]});

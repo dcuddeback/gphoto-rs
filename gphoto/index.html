@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `gphoto` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, gphoto">
+
+    <title>gphoto - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'gphoto', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>gphoto</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-0' class='srclink' href='../src/gphoto/lib.rs.html#1-24' title='goto source code'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Abilities.html'
+                               title='gphoto::Abilities'>Abilities</a></td>
+                        <td class='docblock short'>
+                             <p>Describes the abilities of a device.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Camera.html'
+                               title='gphoto::Camera'>Camera</a></td>
+                        <td class='docblock short'>
+                             <p>A structure representing a camera connected to the system.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.CameraFile.html'
+                               title='gphoto::CameraFile'>CameraFile</a></td>
+                        <td class='docblock short'>
+                             <p>A file stored on a camera&#39;s storage.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Context.html'
+                               title='gphoto::Context'>Context</a></td>
+                        <td class='docblock short'>
+                             <p>A <code>libgphoto2</code> library context.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Error.html'
+                               title='gphoto::Error'>Error</a></td>
+                        <td class='docblock short'>
+                             <p>An error type for working with gphoto2.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.FileMedia.html'
+                               title='gphoto::FileMedia'>FileMedia</a></td>
+                        <td class='docblock short'>
+                             <p>Media stored as a local file.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.LibraryVersion.html'
+                               title='gphoto::LibraryVersion'>LibraryVersion</a></td>
+                        <td class='docblock short'>
+                             <p>A structure that describes the version of the <code>libgphoto2</code> library.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Port.html'
+                               title='gphoto::Port'>Port</a></td>
+                        <td class='docblock short'>
+                             <p>A structure describing a port.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Storage.html'
+                               title='gphoto::Storage'>Storage</a></td>
+                        <td class='docblock short'>
+                             <p>Structure containing information about a camera&#39;s storage.</p>
+
+                        </td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.AccessType.html'
+                               title='gphoto::AccessType'>AccessType</a></td>
+                        <td class='docblock short'>
+                             <p>Types of access permissions.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.CameraOperation.html'
+                               title='gphoto::CameraOperation'>CameraOperation</a></td>
+                        <td class='docblock short'>
+                             <p>Operations that can be performed on a device.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.DeviceType.html'
+                               title='gphoto::DeviceType'>DeviceType</a></td>
+                        <td class='docblock short'>
+                             <p>Types of devices.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.DriverStatus.html'
+                               title='gphoto::DriverStatus'>DriverStatus</a></td>
+                        <td class='docblock short'>
+                             <p>Stability of camera driver.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.ErrorKind.html'
+                               title='gphoto::ErrorKind'>ErrorKind</a></td>
+                        <td class='docblock short'>
+                             <p>Types of errors reported by gphoto2.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.FileOperation.html'
+                               title='gphoto::FileOperation'>FileOperation</a></td>
+                        <td class='docblock short'>
+                             <p>Operations that can be performed on files on a device&#39;s storage.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.FilesystemType.html'
+                               title='gphoto::FilesystemType'>FilesystemType</a></td>
+                        <td class='docblock short'>
+                             <p>Types of filesystem hierarchies.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.FolderOperation.html'
+                               title='gphoto::FolderOperation'>FolderOperation</a></td>
+                        <td class='docblock short'>
+                             <p>Operations that can be performed on folders on a device&#39;s storage.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.PortType.html'
+                               title='gphoto::PortType'>PortType</a></td>
+                        <td class='docblock short'>
+                             <p>Types of ports.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.StorageType.html'
+                               title='gphoto::StorageType'>StorageType</a></td>
+                        <td class='docblock short'>
+                             <p>Types of storage hardware.</p>
+
+                        </td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='trait' href='trait.Media.html'
+                               title='gphoto::Media'>Media</a></td>
+                        <td class='docblock short'>
+                             <p>A trait for types that can store media.</p>
+
+                        </td>
+                    </tr>
+                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.libgphoto2_version.html'
+                               title='gphoto::libgphoto2_version'>libgphoto2_version</a></td>
+                        <td class='docblock short'>
+                             <p>Returns a structure with the version of the <code>libgphoto2</code> C library.</p>
+
+                        </td>
+                    </tr>
+                </table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.Result.html'
+                               title='gphoto::Result'>Result</a></td>
+                        <td class='docblock short'>
+                             <p>A specialized <code>Result</code> type for working with gphoto2.</p>
+
+                        </td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "gphoto";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

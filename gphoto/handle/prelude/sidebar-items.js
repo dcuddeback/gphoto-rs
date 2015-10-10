@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["Handle","Types that manages access to a resource."],["HandleMut","Types that manages access to a mutable resource."]]});

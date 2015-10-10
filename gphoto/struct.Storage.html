@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Storage` struct in crate `gphoto`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Storage">
+
+    <title>gphoto::Storage - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>gphoto</a></p><script>window.sidebarCurrent = {name: 'Storage', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gphoto</a>::<wbr><a class='struct' href=''>Storage</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-507' class='srclink' href='../src/gphoto/storage.rs.html#41-43' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Storage {
+    // some fields omitted
+}</pre><div class='docblock'><p>Structure containing information about a camera&#39;s storage.</p>
+
+<h2 id='example' class='section-header'><a href='#example'>Example</a></h2>
+<p>A <code>Storage</code> object can be used to retrieve information about a camera&#39;s storage:</p>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>context</span> <span class='op'>=</span> <span class='ident'>gphoto</span>::<span class='ident'>Context</span>::<span class='ident'>new</span>().<span class='ident'>unwrap</span>();
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>camera</span> <span class='op'>=</span> <span class='ident'>gphoto</span>::<span class='ident'>Camera</span>::<span class='ident'>autodetect</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>context</span>).<span class='ident'>unwrap</span>();
+
+<span class='kw'>for</span> <span class='ident'>storage</span> <span class='kw'>in</span> <span class='ident'>camera</span>.<span class='ident'>storage</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>context</span>).<span class='ident'>unwrap</span>() {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;       base dir = {:?}&quot;</span>, <span class='ident'>storage</span>.<span class='ident'>base_dir</span>());
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;          label = {:?}&quot;</span>, <span class='ident'>storage</span>.<span class='ident'>label</span>());
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;    description = {:?}&quot;</span>, <span class='ident'>storage</span>.<span class='ident'>description</span>());
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;   storage type = {:?}&quot;</span>, <span class='ident'>storage</span>.<span class='ident'>storage_type</span>());
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;filesystem type = {:?}&quot;</span>, <span class='ident'>storage</span>.<span class='ident'>filesystem_type</span>());
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;    access type = {:?}&quot;</span>, <span class='ident'>storage</span>.<span class='ident'>access_type</span>());
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;    capacity kb = {:?}&quot;</span>, <span class='ident'>storage</span>.<span class='ident'>capacity_kbytes</span>());
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;        free kb = {:?}&quot;</span>, <span class='ident'>storage</span>.<span class='ident'>free_kbytes</span>());
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;    free images = {:?}&quot;</span>, <span class='ident'>storage</span>.<span class='ident'>free_images</span>());
+}</pre>
+
+<p>The above example might print something like the following:</p>
+
+<pre><code class="language-text">       base dir = Some(&quot;/store_00010001&quot;)
+          label = Some(&quot;NIKON D750  [Slot 1]&quot;)
+    description = None
+   storage type = Some(RemoveableRam)
+filesystem type = Some(DCF)
+    access type = Some(ReadDelete)
+    capacity kb = Some(31154688)
+        free kb = Some(30833088)
+    free images = Some(580)
+</code></pre>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../gphoto/struct.Storage.html' title='gphoto::Storage'>Storage</a></code></h3><div class='impl-items'><h4 id='method.base_dir' class='method'><code>fn <a href='#method.base_dir' class='fnname'>base_dir</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;&gt;</code></h4>
+<div class='docblock'><p>Base directory of the storage.</p>
+</div><h4 id='method.label' class='method'><code>fn <a href='#method.label' class='fnname'>label</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;&gt;</code></h4>
+<div class='docblock'><p>The storage&#39;s label.</p>
+</div><h4 id='method.description' class='method'><code>fn <a href='#method.description' class='fnname'>description</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;&gt;</code></h4>
+<div class='docblock'><p>A description of the storage.</p>
+</div><h4 id='method.storage_type' class='method'><code>fn <a href='#method.storage_type' class='fnname'>storage_type</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='../gphoto/enum.StorageType.html' title='gphoto::StorageType'>StorageType</a>&gt;</code></h4>
+<div class='docblock'><p>The storage&#39;s hardware type.</p>
+</div><h4 id='method.filesystem_type' class='method'><code>fn <a href='#method.filesystem_type' class='fnname'>filesystem_type</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='../gphoto/enum.FilesystemType.html' title='gphoto::FilesystemType'>FilesystemType</a>&gt;</code></h4>
+<div class='docblock'><p>The hiearchy type of the storage&#39;s filesystem.</p>
+</div><h4 id='method.access_type' class='method'><code>fn <a href='#method.access_type' class='fnname'>access_type</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='../gphoto/enum.AccessType.html' title='gphoto::AccessType'>AccessType</a>&gt;</code></h4>
+<div class='docblock'><p>The storage&#39;s access permissions.</p>
+</div><h4 id='method.capacity_kbytes' class='method'><code>fn <a href='#method.capacity_kbytes' class='fnname'>capacity_kbytes</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>&gt;</code></h4>
+<div class='docblock'><p>The storage&#39;s total capacity in kilobytes.</p>
+</div><h4 id='method.free_kbytes' class='method'><code>fn <a href='#method.free_kbytes' class='fnname'>free_kbytes</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>&gt;</code></h4>
+<div class='docblock'><p>The storage&#39;s free space in kilobytes.</p>
+</div><h4 id='method.free_images' class='method'><code>fn <a href='#method.free_images' class='fnname'>free_images</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>&gt;</code></h4>
+<div class='docblock'><p>An estimate of the number of images that could fit in the storage&#39;s remaining space.</p>
+
+<p>This value is estimated by the camera.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "gphoto";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

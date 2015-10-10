@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Camera` struct in crate `gphoto`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Camera">
+
+    <title>gphoto::Camera - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>gphoto</a></p><script>window.sidebarCurrent = {name: 'Camera', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gphoto</a>::<wbr><a class='struct' href=''>Camera</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-300' class='srclink' href='../src/gphoto/camera.rs.html#14-16' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Camera {
+    // some fields omitted
+}</pre><div class='docblock'><p>A structure representing a camera connected to the system.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../gphoto/struct.Camera.html' title='gphoto::Camera'>Camera</a></code></h3><div class='impl-items'><h4 id='method.autodetect' class='method'><code>fn <a href='#method.autodetect' class='fnname'>autodetect</a>(context: &amp;mut <a class='struct' href='../gphoto/struct.Context.html' title='gphoto::Context'>Context</a>) -&gt; <a class='type' href='../gphoto/type.Result.html' title='gphoto::Result'>Result</a>&lt;Self&gt;</code></h4>
+<div class='docblock'><p>Opens the first detected camera.</p>
+</div><h4 id='method.capture_image' class='method'><code>fn <a href='#method.capture_image' class='fnname'>capture_image</a>(&amp;mut self, context: &amp;mut <a class='struct' href='../gphoto/struct.Context.html' title='gphoto::Context'>Context</a>) -&gt; <a class='type' href='../gphoto/type.Result.html' title='gphoto::Result'>Result</a>&lt;<a class='struct' href='../gphoto/struct.CameraFile.html' title='gphoto::CameraFile'>CameraFile</a>&gt;</code></h4>
+<div class='docblock'><p>Captures an image.</p>
+</div><h4 id='method.download' class='method'><code>fn <a href='#method.download' class='fnname'>download</a>&lt;T: <a class='trait' href='../gphoto/trait.Media.html' title='gphoto::Media'>Media</a>&gt;(&amp;mut self, context: &amp;mut <a class='struct' href='../gphoto/struct.Context.html' title='gphoto::Context'>Context</a>, source: &amp;<a class='struct' href='../gphoto/struct.CameraFile.html' title='gphoto::CameraFile'>CameraFile</a>, destination: &amp;mut T) -&gt; <a class='type' href='../gphoto/type.Result.html' title='gphoto::Result'>Result</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Downloads a file from the camera.</p>
+</div><h4 id='method.port' class='method'><code>fn <a href='#method.port' class='fnname'>port</a>&lt;'a&gt;(&amp;'a self) -&gt; <a class='struct' href='../gphoto/struct.Port.html' title='gphoto::Port'>Port</a>&lt;'a&gt;</code></h4>
+<div class='docblock'><p>Returns information about the port the camera is connected to.</p>
+</div><h4 id='method.abilities' class='method'><code>fn <a href='#method.abilities' class='fnname'>abilities</a>(&amp;self) -&gt; <a class='struct' href='../gphoto/struct.Abilities.html' title='gphoto::Abilities'>Abilities</a></code></h4>
+<div class='docblock'><p>Retrieves the camera&#39;s abilities.</p>
+</div><h4 id='method.storage' class='method'><code>fn <a href='#method.storage' class='fnname'>storage</a>(&amp;mut self, context: &amp;mut <a class='struct' href='../gphoto/struct.Context.html' title='gphoto::Context'>Context</a>) -&gt; <a class='type' href='../gphoto/type.Result.html' title='gphoto::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../gphoto/struct.Storage.html' title='gphoto::Storage'>Storage</a>&gt;&gt;</code></h4>
+<div class='docblock'><p>Retrieves information about the camera&#39;s storage.</p>
+
+<p>Returns a <code>Vec</code> containing one <code>Storage</code> for each filesystem on the device.</p>
+</div><h4 id='method.summary' class='method'><code>fn <a href='#method.summary' class='fnname'>summary</a>(&amp;mut self, context: &amp;mut <a class='struct' href='../gphoto/struct.Context.html' title='gphoto::Context'>Context</a>) -&gt; <a class='type' href='../gphoto/type.Result.html' title='gphoto::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
+<div class='docblock'><p>Returns the camera&#39;s summary.</p>
+
+<p>The summary typically contains non-configurable information about the camera, such as
+manufacturer and number of pictures taken.</p>
+
+<h2 id='errors' class='section-header'><a href='#errors'>Errors</a></h2>
+<p>This function returns an error if the summary could not be retrieved:</p>
+
+<ul>
+<li><code>NotSupported</code> if there is no summary available for the camera.</li>
+<li><code>CorruptedData</code> if the summary is invalid UTF-8.</li>
+</ul>
+</div><h4 id='method.manual' class='method'><code>fn <a href='#method.manual' class='fnname'>manual</a>(&amp;mut self, context: &amp;mut <a class='struct' href='../gphoto/struct.Context.html' title='gphoto::Context'>Context</a>) -&gt; <a class='type' href='../gphoto/type.Result.html' title='gphoto::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
+<div class='docblock'><p>Returns the camera&#39;s manual.</p>
+
+<p>The manual contains information about using the camera.</p>
+
+<h2 id='errors' class='section-header'><a href='#errors'>Errors</a></h2>
+<p>This function returns an error if the manual could not be retrieved:</p>
+
+<ul>
+<li><code>NotSupported</code> if there is no manual available for the camera.</li>
+<li><code>CorruptedData</code> if the summary is invalid UTF-8.</li>
+</ul>
+</div><h4 id='method.about_driver' class='method'><code>fn <a href='#method.about_driver' class='fnname'>about_driver</a>(&amp;mut self, context: &amp;mut <a class='struct' href='../gphoto/struct.Context.html' title='gphoto::Context'>Context</a>) -&gt; <a class='type' href='../gphoto/type.Result.html' title='gphoto::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
+<div class='docblock'><p>Returns information about the camera driver.</p>
+
+<p>This text typically contains information about the driver&#39;s author, acknowledgements, etc.</p>
+
+<h2 id='errors' class='section-header'><a href='#errors'>Errors</a></h2>
+<p>This function returns an error if the about text could not be retrieved:</p>
+
+<ul>
+<li><code>NotSupported</code> if there is no about text available for the camera&#39;s driver.</li>
+<li><code>CorruptedData</code> if the summary is invalid UTF-8.</li>
+</ul>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../gphoto/struct.Camera.html' title='gphoto::Camera'>Camera</a></code></h3><div class='impl-items'><h4 id='method.drop' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "gphoto";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["PortType","Types of ports."]],"struct":[["Port","A structure describing a port."]]});

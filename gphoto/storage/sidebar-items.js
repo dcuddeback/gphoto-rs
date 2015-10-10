@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["AccessType","Types of access permissions."],["FilesystemType","Types of filesystem hierarchies."],["StorageType","Types of storage hardware."]],"struct":[["Storage","Structure containing information about a camera's storage."]]});

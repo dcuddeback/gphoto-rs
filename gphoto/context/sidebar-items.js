@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Context","A `libgphoto2` library context."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["FileMedia","Media stored as a local file."]],"trait":[["Media","A trait for types that can store media."]]});
