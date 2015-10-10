@@ -5,6 +5,7 @@ authors = ["David Cuddeback <david.cuddeback@gmail.com>"]
 description = "Rust wrapper for libgphoto2"
 homepage = "https://github.com/dcuddeback/gphoto-rs"
 repository = "https://github.com/dcuddeback/gphoto-rs"
+documentation = "http://dcuddeback.github.io/gphoto-rs/gphoto/"
 license = "MIT"
 readme = "README.md"
 keywords = ["gphoto2", "camera", "hardware"]
