@@ -23,7 +23,7 @@ Add `gphoto` as a dependency in `Cargo.toml`:
 
 ```toml
 [dependencies]
-gphoto = "0.1.0"
+gphoto = "0.1"
 ```
 
 Import the `gphoto` crate. The starting point for nearly all `gphoto` functionality is to create a
@@ -35,13 +35,13 @@ extern crate gphoto;
 use std::path::Path;
 
 fn main() {
-  let mut context = gphoto::Context::new();
+    let mut context = gphoto::Context::new().unwrap();
 
-  let mut camera = gphoto::Camera::autodetect(&mut context).unwrap();
-  let capture = camera.capture_image().unwrap();
-  let mut file = gphoto::FileMedia::create(Path::new(capture.basename())).unwrap();
+    let mut camera = gphoto::Camera::autodetect(&mut context).unwrap();
+    let capture = camera.capture_image(&mut context).unwrap();
+    let mut file = gphoto::FileMedia::create(Path::new(&*capture.basename())).unwrap();
 
-  camera.download(&capture, &mut file).unwrap()
+    camera.download(&mut context, &capture, &mut file).unwrap();
 }
 ```
 
