@@ -1,5 +1,3 @@
-sudo: false
-
 language: rust
 rust:
   - stable
@@ -13,19 +11,4 @@ matrix:
 addons:
   apt:
     packages:
-      - build-essential
-      - gettext
-      - autopoint
-      - libusb-dev
-      - libexif-dev
-
-before_install:
-  - git clone https://github.com/gphoto/libgphoto2.git
-  - cd libgphoto2 && autoreconf --install --symlink && ./configure --prefix=$HOME/local && make && make install
-  - PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig pkg-config --list-all
-  - PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig pkg-config --libs libgphoto2
-  - PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig pkg-config --modversion libgphoto2
-
-script:
-  - PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH cargo build --verbose
-  - PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH cargo test --verbose
+      - libgphoto2-dev
