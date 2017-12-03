@@ -1,6 +1,6 @@
 [package]
 name = "gphoto"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["David Cuddeback <david.cuddeback@gmail.com>"]
 description = "Rust wrapper for libgphoto2"
 homepage = "https://github.com/dcuddeback/gphoto-rs"

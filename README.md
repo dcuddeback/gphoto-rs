@@ -23,7 +23,7 @@ Add `gphoto` as a dependency in `Cargo.toml`:
 
 ```toml
 [dependencies]
-gphoto = "0.1"
+gphoto = "0.1.2"
 ```
 
 Import the `gphoto` crate. The starting point for nearly all `gphoto` functionality is to create a
